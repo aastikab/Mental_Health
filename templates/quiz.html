@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mental Health Assessment - MediMind</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/quiz.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/">MediMind 🧠</a>
+        </div>
+        <div class="nav-links">
+            <a href="/#features">Features</a>
+            <a href="/reminder">Set Reminder</a>
+            <a href="/quiz" class="nav-cta">Take Quiz</a>
+        </div>
+    </nav>
+
+    <div class="quiz-wrapper">
+        <div class="quiz-container">
+            <!-- Quiz Form -->
+            <form id="quiz-form">
+                <header>
+                    <h1>Mental Health Assessment</h1>
+                    <p>Take a moment to reflect on your mental well-being</p>
+                </header>
+
+                {% for question in questions %}
+                <div class="question-card">
+                    <h3>{{ question.question }}</h3>
+                    <div class="options">
+                        {% for option in question.options %}
+                        <label class="option">
+                            <input type="radio" name="q{{ question.id }}" value="{{ loop.index0 }}" required>
+                            <span class="radio-custom"></span>
+                            <span class="option-text">{{ option }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+
+                <button type="submit" class="submit-btn">Submit Assessment</button>
+            </form>
+
+            <!-- Results Section (Initially Hidden) -->
+            <div id="results" style="display: none;">
+                <div class="results-header">
+                    <h2>Your Mental Health Score</h2>
+                    <p class="date">{{ current_date }}</p>
+                </div>
+
+                <div class="score-container">
+                    <div class="score-circle">
+                        <div class="score-inner">
+                            <span id="score-value">73</span>%
+                            <span class="score-label">Mental Wellness</span>
+                        </div>
+                    </div>
+                    <h3 id="status-message">High stress</h3>
+                </div>
+
+                <div class="wellness-sections">
+                    <!-- Daily Recommendations -->
+                    <div class="wellness-card">
+                        <h3><i class="fas fa-list-check"></i> Daily Action Steps</h3>
+                        <div class="recommendation-list">
+                            <div class="recommendation-item">
+                                <i class="fas fa-user-doctor"></i>
+                                <span>Schedule an appointment with a mental health professional</span>
+                            </div>
+                            <div class="recommendation-item">
+                                <i class="fas fa-spa"></i>
+                                <span>Practice stress-reduction techniques daily</span>
+                            </div>
+                            <div class="recommendation-item">
+                                <i class="fas fa-moon"></i>
+                                <span>Establish a regular sleep schedule</span>
+                            </div>
+                            <div class="recommendation-item">
+                                <i class="fas fa-heart"></i>
+                                <span>Reach out to your support network</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wellness Activities -->
+                    <div class="wellness-card">
+                        <h3><i class="fas fa-seedling"></i> Daily Wellness Activities</h3>
+                        <div class="activities-grid">
+                            <div class="activity-item">
+                                <i class="fas fa-walking"></i>
+                                <span>15min Walk</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-wind"></i>
+                                <span>Deep Breathing</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-book-open"></i>
+                                <span>Journaling</span>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-meditation"></i>
+                                <span>Meditation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Tracking -->
+                    <div class="wellness-card">
+                        <h3><i class="fas fa-chart-line"></i> Track Your Progress</h3>
+                        <p class="progress-text">Complete these activities daily and take the assessment weekly to monitor your improvement.</p>
+                        <div class="progress-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Next Assessment</span>
+                                <span class="stat-value">7 days</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Current Streak</span>
+                                <span class="stat-value">3 days</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button onclick="location.href='/'" class="action-btn primary">
+                        <i class="fas fa-home"></i> Return Home
+                    </button>
+                    <button type="button" class="action-btn secondary">
+                        <i class="fas fa-redo"></i> Take Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add jQuery and quiz.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+</body>
+</html> 

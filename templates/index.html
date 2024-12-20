@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MediMind - Mental Health Support</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/">MediMind 🧠</a>
+        </div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="/reminder">Set Reminder</a>
+            <a href="/quiz" class="nav-cta">Take Quiz</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Your Mental Health Matters</h1>
+        <p>Track, understand, and improve your mental well-being with MediMind's personalized support system.</p>
+        <div class="hero-buttons">
+            <a href="/quiz" class="btn primary">Start Assessment</a>
+            <a href="#chat" class="btn secondary">Chat with AI</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2>How MediMind Helps You</h2>
+        <div class="feature-cards">
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Mental Health Assessment</h3>
+                <p>Weekly quizzes to track your mental well-being</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💭</div>
+                <h3>AI Support Chat</h3>
+                <p>24/7 supportive conversations with our AI assistant</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Progress Tracking</h3>
+                <p>Monitor your journey with detailed insights</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Section -->
+    <section id="chat" class="chat-section">
+        <div class="chat-container">
+            <h2>Chat with MediMind</h2>
+            <div class="chat-box">
+                <main class="msger-chat">
+                    <!-- Messages will be inserted here -->
+                </main>
+                <form class="msger-inputarea">
+                    <input type="text" class="msger-input" placeholder="Type your message...">
+                    <button type="submit" class="msger-send-btn">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add these before closing body tag -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/bot.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Set Reminder - MediMind</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/reminder.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="/">MediMind 🧠</a>
+        </div>
+        <div class="nav-links">
+            <a href="/#features">Features</a>
+            <a href="/reminder">Set Reminder</a>
+            <a href="/quiz" class="nav-cta">Take Quiz</a>
+        </div>
+    </nav>
+
+    <div class="reminder-wrapper">
+        <div class="reminder-container">
+            <header>
+                <h1>Set Your Weekly Check-in</h1>
+                <p>Choose when you'd like to receive your wellness check-in reminders</p>
+            </header>
+
+            <form id="reminder-form" class="reminder-form">
+                <div class="form-group">
+                    <label>Preferred Day:</label>
+                    <select name="day" required>
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                        <option value="sunday">Sunday</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Time:</label>
+                    <input type="time" name="time" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Notification Method:</label>
+                    <select name="method" required>
+                        <option value="email">Email</option>
+                        <option value="browser">Browser Notification</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="email-input" style="display: none;">
+                    <label>Email Address:</label>
+                    <input type="email" name="email" placeholder="Enter your email">
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-bell"></i> Set Reminder
+                </button>
+            </form>
+
+            <div id="success-message" style="display: none;">
+                <div class="success-content">
+                    <i class="fas fa-check-circle"></i>
+                    <h2>Reminder Set Successfully!</h2>
+                    <p>You'll receive your wellness check-in reminder at the specified time.</p>
+                    <div class="reminder-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span id="reminder-day">Monday</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span id="reminder-time">9:00 AM</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span id="reminder-method">Email</span>
+                        </div>
+                    </div>
+                    <button onclick="location.href='/'" class="return-btn">
+                        <i class="fas fa-home"></i> Return Home
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/reminder.js') }}"></script>
+</body>
+</html> 
